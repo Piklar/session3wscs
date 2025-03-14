@@ -9,4 +9,10 @@ router.get("/", (req, res) => {
     );
 })
 
+// Router to insert book
+router.post("/", bookController.addBook);
+
 module.exports = router;
+
+// Router to delete a book
+router.delete("/:bookId", bookController.deleteBook);
