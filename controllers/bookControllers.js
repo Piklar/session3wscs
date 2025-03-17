@@ -36,3 +36,45 @@ module.exports.deleteBook = (req, res) => {
     .then(removeBook => res.send(removeBook))
     .catch(err => res.send(false))
 }
+
+// Update a Book
+module.exports.updateBook = (req, res) => {
+
+    let newContent = req.body;
+
+    return Book.findByIdAndUpdate(req.params.bookId, newContent).then(result => {
+        if(result){
+            res.send(result)
+        }else{
+            res.send("The book cannot be found!")
+        }
+
+    })
+    .catch(err => res.send(err))
+}
+
+// Get Book by ID
+module.exports.getBookById = (req, res) => {
+    return Book.findById(req.params.bookId).then(result => {
+        if(result){
+            res.send(result)
+        }else{
+            res.send("The book cannot be found!")
+        }
+
+    })
+    .catch(err => res.send(err))
+}
+
+// Change IsAvailable status
+module.exports.changeStatus = (req, res) => {
+    return Book.findByIdAndUpdate(req.params.bookId, {isAvailable: req.body.isAvailable}).then(result => {
+        if(result){
+            res.send(result)
+        }else{
+            res.send("The book cannot be found!")
+        }
+
+    })
+    .catch(err => res.send(err))
+}

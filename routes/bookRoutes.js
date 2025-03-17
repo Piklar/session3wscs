@@ -16,3 +16,12 @@ module.exports = router;
 
 // Router to delete a book
 router.delete("/:bookId", bookController.deleteBook);
+
+// Router to update a book
+router.put("/:bookId", bookController.updateBook);
+
+// Router to get a book by ID
+router.get("/:bookId", bookController.getBookById);
+
+// Router to change IsAvailable status
+router.put("/:bookId/changeStatus", bookController.changeStatus);
