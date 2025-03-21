@@ -3,6 +3,8 @@ const router = require("express").Router();
 
 const bookController = require('../controllers/bookControllers.js');
 
+module.exports = router;
+
 // Router to get all books
 router.get("/", (req, res) => {
     bookController.getAllBooks().then(result => res.send(result)
@@ -11,8 +13,6 @@ router.get("/", (req, res) => {
 
 // Router to insert book
 router.post("/", bookController.addBook);
-
-module.exports = router;
 
 // Router to delete a book
 router.delete("/:bookId", bookController.deleteBook);

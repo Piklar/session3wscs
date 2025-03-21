@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 //Allows us to use all routes from bookRoutes
 const bookRoutes = require("./routes/bookRoutes.js");
+const userRoutes = require("./routes/userRoutes.js");
 
 // Server name => server
 const server = express();
@@ -27,5 +28,8 @@ mongoose.connection.once("open", () => console.log(`MongoDB connection is succes
 
 // Add the task route 
 server.use("/books", bookRoutes);
+
+// Add the user route
+server.use("/users", userRoutes);
 
 server.listen(port, () => console.log(`Server is now running at port ${port}.`));
